@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#fff0f4">
+<meta name="description" content="Surat kecil dari Shaffan untuk Pavita 💗">
+<title>tebak apa hayo isinya? 💌</title>
+<style>
+:root{
+  --pink:#ffd8e4; --pink2:#fff0f4; --hot:#e9789b; --deep:#8c4660;
+  --yellow:#fff0ad; --yellow2:#fff9dc; --cream:#fffdf8; --ink:#513b45;
+  --white:rgba(255,255,255,.82); --shadow:0 18px 50px rgba(170,91,119,.16);
+}
+*{box-sizing:border-box}
+html{min-height:100%; background:var(--pink2)}
+body{margin:0;min-height:100vh;font-family:ui-rounded,"Nunito", "Trebuchet MS",system-ui,-apple-system,sans-serif;color:var(--ink);
+ background:radial-gradient(circle at 12% 12%,#fff9d7 0,transparent 28%),radial-gradient(circle at 90% 80%,#ffdbe7 0,transparent 30%),linear-gradient(145deg,#fff8e8,#fff0f5 55%,#fff8df);overflow-x:hidden}
+button,input{font:inherit}
+button{cursor:pointer;-webkit-tap-highlight-color:transparent}
+button:focus-visible,input:focus-visible{outline:3px solid #d85c85;outline-offset:3px}
+.wrap{min-height:100svh;display:flex;flex-direction:column;align-items:center;padding:clamp(12px,3vw,28px);position:relative}
+.topbar{width:min(100%,760px);display:flex;align-items:center;justify-content:space-between;gap:12px;margin:0 auto 16px}
+.brand{font-size:.88rem;font-weight:900;letter-spacing:.04em;color:var(--deep)}
+.top-actions{display:flex;gap:8px;align-items:center}
+.mini-btn{border:1px solid #f5c5d4;background:#ffffffbd;color:var(--deep);border-radius:999px;padding:9px 12px;font-size:.83rem;font-weight:800;box-shadow:0 5px 14px #e5a6bc22}
+.progress{height:7px;background:#ffffffa8;border-radius:99px;overflow:hidden;width:min(100%,760px);margin-bottom:20px}
+.progress-fill{height:100%;width:0;background:linear-gradient(90deg,#f28eae,#f5d85f);border-radius:99px;transition:width .35s ease}
+main{width:min(100%,760px);margin:auto;display:flex;align-items:center;justify-content:center;flex:1}
+.screen{display:none;width:100%;animation:appear .5s cubic-bezier(.2,.8,.2,1) both}
+.screen.active{display:block}
+.panel{position:relative;overflow:hidden;text-align:center;background:var(--white);border:1px solid #fff;border-radius:30px;padding:clamp(22px,5vw,46px);box-shadow:var(--shadow);backdrop-filter:blur(12px)}
+.panel:before{content:"";position:absolute;inset:0 auto auto 0;width:100%;height:7px;background:linear-gradient(90deg,#f6a8c0,#ffe48a,#f6a8c0)}
+.kicker{display:inline-block;background:#fff5c8;color:#8e6c27;border:1px solid #f8e7a3;border-radius:999px;padding:7px 12px;font-size:.76rem;font-weight:900;letter-spacing:.07em;text-transform:uppercase}
+h1,h2,p{margin-top:0}
+h1{font-size:clamp(2rem,8vw,4.2rem);line-height:1.05;letter-spacing:-.055em;margin:18px 0 14px;color:var(--deep)}
+h2{font-size:clamp(1.55rem,5vw,2.5rem);line-height:1.12;letter-spacing:-.035em;margin:15px 0}
+p{font-size:clamp(1rem,2.7vw,1.13rem);line-height:1.75;color:#71515f}
+.sub{max-width:520px;margin:0 auto 22px}
+.emoji{font-size:clamp(3.4rem,13vw,6rem);line-height:1.25;display:block;filter:drop-shadow(0 8px 7px #d785a22a)}
+.btnrow{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:22px}
+.btn{border:0;border-radius:999px;padding:14px 21px;font-weight:900;min-height:48px;box-shadow:0 8px 17px #d87c9b25;transition:transform .18s,filter .18s}
+.btn:active{transform:scale(.97)}
+.primary{color:white;background:linear-gradient(135deg,#ef8cad,#dd6d94)}
+.secondary{color:#76541f;background:linear-gradient(135deg,#fff0a7,#ffe48a)}
+.ghost{background:#fff;color:var(--deep);border:1px solid #f4c7d5;box-shadow:none}
+.smallnote{font-size:.82rem;color:#9a7b88;margin-top:16px}
+.type-line{min-height:3.5em;max-width:550px;margin:0 auto}
+.letter{background:#fffdf2;border:1px solid #f4e6b8;border-radius:18px;padding:22px;text-align:left;box-shadow:inset 0 0 0 5px #fff9df;max-width:550px;margin:18px auto}
+.letter p{font-family:Georgia,serif;font-size:1.05rem;line-height:1.8}
+.seal{display:inline-grid;place-items:center;width:70px;height:70px;border-radius:50%;background:#e980a0;color:#fff;font-size:1.9rem;box-shadow:0 8px 18px #dc78982a;margin:12px auto}
+input[type=password],input[type=text]{width:min(100%,340px);padding:14px 16px;border-radius:14px;border:1px solid #f0bfd0;background:#fff;color:var(--ink);margin:8px 0}
+.quiz-options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;max-width:500px;margin:18px auto}
+.quiz-options button{padding:14px 10px;border-radius:16px;border:1px solid #f5cad8;background:#fff;color:var(--deep);font-weight:800;min-height:55px}
+.feedback{min-height:2em;font-weight:800;color:#b95377;margin:10px 0}
+.photo-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:20px auto;max-width:520px}
+.photo-slot{aspect-ratio:1/1;border:2px dashed #efb5c9;border-radius:18px;background:linear-gradient(145deg,#fff8cf,#fff0f5);overflow:hidden;display:grid;place-items:center;color:#a86a80;font-weight:800;position:relative}
+.photo-slot img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
+.photo-slot span{padding:12px}
+.upload-label{display:inline-flex;align-items:center;justify-content:center;padding:11px 16px;border:1px solid #f0bfd0;background:#fff;border-radius:999px;color:var(--deep);font-weight:800;cursor:pointer}
+.upload-label input{display:none}
+.promise-list{display:grid;gap:10px;text-align:left;max-width:510px;margin:18px auto}
+.promise{background:#fff;border:1px solid #f6d3df;border-radius:15px;padding:13px 15px;color:#755361;line-height:1.5}
+.choice{max-width:520px;margin:20px auto;display:grid;gap:10px}
+.choice .btn{width:100%}
+.ending-icon{font-size:4rem;animation:bob 2s ease-in-out infinite}
+.footer{padding:18px 0 5px;text-align:center;color:#a17f8e;font-size:.76rem}
+.heart{position:fixed;bottom:-40px;pointer-events:none;z-index:0;animation:floatUp linear forwards;opacity:.7}
+.confetti{position:fixed;top:-20px;z-index:5;pointer-events:none;animation:fall 3.2s linear forwards}
+#toast{position:fixed;left:50%;bottom:20px;transform:translateX(-50%);max-width:90vw;background:#70465a;color:#fff;padding:12px 17px;border-radius:999px;font-weight:800;z-index:10;box-shadow:var(--shadow);display:none}
+@keyframes appear{from{opacity:0;transform:translateY(13px) scale(.99)}to{opacity:1;transform:translateY(0) scale(1)}}
+@keyframes floatUp{to{transform:translateY(-115vh) rotate(25deg);opacity:0}}
+@keyframes fall{to{transform:translateY(110vh) rotate(650deg);opacity:.2}}
+@keyframes bob{0%,100%{transform:translateY(0) rotate(-4deg)}50%{transform:translateY(-8px) rotate(4deg)}}
+@media(max-width:480px){
+ .wrap{padding:12px 12px max(12px,env(safe-area-inset-bottom))}
+ .topbar{margin-bottom:12px}.progress{margin-bottom:14px}
+ .panel{border-radius:24px;padding:25px 18px}
+ .quiz-options{grid-template-columns:1fr}
+ .btnrow{gap:8px}.btn{padding:13px 17px;flex:1 1 auto}
+ .top-actions .mini-btn{padding:8px 10px;font-size:.75rem}
+}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="topbar">
+    <div class="brand">💌 PAVITA × SHAFFAN</div>
+    <div class="top-actions">
+      <button class="mini-btn" id="musicBtn" type="button" aria-pressed="false">♫ Musik: mati</button>
+      <button class="mini-btn" id="restartBtn" type="button">↻ Ulang</button>
+    </div>
+  </header>
+  <div class="progress" aria-label="Kemajuan halaman"><div class="progress-fill" id="progressFill"></div></div>
+  <main>
+    <!-- 1 -->
+    <section class="screen active" data-screen="0">
+      <div class="panel">
+        <span class="emoji">🧸💗</span>
+        <span class="kicker">ada sesuatu buat kamu</span>
+        <h1>Hai, Pavita<br>ziadatu zahroh!</h1>
+        <p class="sub type-line" data-typing="Aku punya sesuatu yang kecil, agak receh, tapi dibuat dengan hati yang serius. Jangan kabur dulu yaa 😭💗"></p>
+        <div class="btnrow"><button class="btn primary" data-next>OKE, AKU KEPo 💌</button></div>
+        <p class="smallnote">dibuat dengan sedikit malu dan banyak sayang ✨</p>
+      </div>
+    </section>
+    <!-- 2 -->
+    <section class="screen" data-screen="1">
+      <div class="panel">
+        <span class="emoji">🔐💌</span><span class="kicker">halaman rahasia</span>
+        <h2>Masukkan kata sandinya duluu</h2>
+        <p class="sub">Petunjuk: nama panggilan kamu, atau coba kata <b>pavita</b> 😉</p>
+        <input id="passwordInput" type="password" placeholder="Kata sandi..." autocomplete="off" aria-label="Kata sandi">
+        <div class="btnrow"><button class="btn primary" id="unlockBtn">Buka rahasia 🔓</button></div>
+        <p class="feedback" id="passwordFeedback" aria-live="polite"></p>
+        <p class="smallnote">Psst: kata sandi ini hanya pengunci lucu di halaman, bukan keamanan sungguhan.</p>
+        <div class="btnrow"><button class="btn ghost" data-next>Lewati dulu aja</button></div>
+      </div>
+    </section>
+    <!-- 3 -->
+    <section class="screen" data-screen="2">
+      <div class="panel">
+        <span class="emoji">✉️🌷</span><span class="kicker">surat rahasia</span>
+        <h2>Ketuk amplopnya!</h2>
+        <p class="sub">Ada surat mini yang pengin aku sampaikan langsung ke kamu.</p>
+        <button id="envelopeBtn" class="seal" aria-label="Buka surat">💌</button>
+        <div id="letterBox" class="letter" hidden>
+          <p>Dear Pavita,</p>
+          <p>Aku tahu mungkin ada sikap atau kata-kataku yang bikin kamu kecewa. Aku nggak mau mengecilkan perasaan kamu, apalagi pura-pura semuanya baik-baik saja.</p>
+          <p>Aku cuma mau mulai dari satu hal: <b>aku minta maaf, ya.</b> Kamu boleh baca ini pelan-pelan. Nggak harus langsung membalas atau langsung memaafkan. 💗</p>
+          <p>— Shaffan</p>
+        </div>
+        <div class="btnrow"><button class="btn primary" data-next>Lanjut, suratnya tersimpan 💗</button></div>
+      </div>
+    </section>
+    <!-- 4 -->
+    <section class="screen" data-screen="3">
+      <div class="panel">
+        <span class="emoji">🤔🐣</span><span class="kicker">tes receh dulu</span>
+        <h2>Kenapa aku bikin website?</h2>
+        <p class="sub">Pilih jawaban yang menurut kamu paling benar 😭</p>
+        <div class="quiz-options">
+          <button data-quiz="salah">Karena gabut banget</button>
+          <button data-quiz="benar">Karena mau minta maaf 💗</button>
+          <button data-quiz="salah">Karena jadi programmer dadakan</button>
+          <button data-quiz="salah">Karena disuruh kucing</button>
+        </div>
+        <p class="feedback" id="quizFeedback" aria-live="polite"></p>
+        <div class="btnrow"><button class="btn primary" data-next>Oke, lanjut 😂</button></div>
+      </div>
+    </section>
+    <!-- 5 -->
+    <section class="screen" data-screen="4">
+      <div class="panel">
+        <span class="emoji">🥺🫶</span><span class="kicker">ngomong serius sebentar</span>
+        <h2>Aku minta maaf, Pavita.</h2>
+        <p class="sub type-line" data-typing="Aku sadar niat baik aja nggak selalu cukup. Kalau sikapku bikin kamu sedih atau kecewa, aku minta maaf. Aku mau belajar mendengarkan kamu lebih baik, bukan cuma menjelaskan diriku sendiri."></p>
+        <div class="letter"><p style="text-align:center;margin:0">“Perasaan kamu tetap penting, bahkan ketika aku belum sepenuhnya memahami semuanya.”</p></div>
+        <div class="btnrow"><button class="btn primary" data-next>Aku masih punya sedikit lagi 💌</button></div>
+      </div>
+    </section>
+    <!-- 6 -->
+    <section class="screen" data-screen="5">
+      <div class="panel">
+        <span class="emoji">📸🌼</span><span class="kicker">album mini kita</span>
+        <h2>Kalau mau, simpan kenangan di sini</h2>
+        <p class="sub">Pilih foto dari perangkatmu untuk ditampilkan di halaman ini. Foto tidak diunggah ke mana-mana; hanya tampil di browser yang sedang dibuka.</p>
+        <div class="photo-grid">
+          <div class="photo-slot" id="slot1"><span>📷 Foto kenangan 1</span></div>
+          <div class="photo-slot" id="slot2"><span>🌷 Foto kenangan 2</span></div>
+        </div>
+        <label class="upload-label">＋ Pilih foto<input id="photoInput" type="file" accept="image/*" multiple></label>
+        <p class="smallnote">Tip: foto yang dipilih akan muncul di kotak atas. Untuk membagikan foto kepada Pavita, tambahkan foto ke folder website sebelum mengunggah, atau gunakan foto yang memang boleh dibagikan.</p>
+        <div class="btnrow"><button class="btn primary" data-next>Kenangannya lanjut dulu 🥹</button></div>
+      </div>
+    </section>
+    <!-- 7 -->
+    <section class="screen" data-screen="6">
+      <div class="panel">
+        <span class="emoji">💛🌷</span><span class="kicker">hal yang ingin aku jaga</span>
+        <h2>Kamu berharga, bukan karena harus selalu baik-baik saja</h2>
+        <p class="sub">Aku menghargai kamu sebagai diri kamu sendiri—termasuk saat kamu butuh waktu, ruang, atau belum siap ngobrol.</p>
+        <div class="promise-list">
+          <div class="promise">🌼 Aku akan berusaha mendengarkan tanpa buru-buru membela diri.</div>
+          <div class="promise">🫶 Aku mau menunjukkan perubahan lewat tindakan, bukan cuma kata-kata.</div>
+          <div class="promise">🕊️ Aku akan menghormati waktu dan perasaan kamu.</div>
+        </div>
+        <div class="btnrow"><button class="btn primary" data-next>Lanjut ke janji kecilku ✨</button></div>
+      </div>
+    </section>
+    <!-- 8 -->
+    <section class="screen" data-screen="7">
+      <div class="panel">
+        <span class="emoji">🤝💖</span><span class="kicker">janji kecil dari Shaffan</span>
+        <h2>Bukan janji jadi sempurna...</h2>
+        <p class="sub">Tapi janji untuk berusaha lebih baik, lebih peka, dan nggak menganggap remeh apa yang kamu rasakan.</p>
+        <div class="letter"><p style="text-align:center;margin:0">Aku nggak bisa mengubah yang sudah terjadi, tapi aku bisa bertanggung jawab atas sikapku setelah ini. Pelan-pelan, aku ingin membuktikannya. 🤍</p></div>
+        <div class="btnrow"><button class="btn primary" data-next>Siap masuk pertanyaan penting? 😳</button></div>
+      </div>
+    </section>
+    <!-- 9 -->
+    <section class="screen" data-screen="8">
+      <div class="panel">
+        <span class="emoji">🥹👉👈</span><span class="kicker">pertanyaan penting</span>
+        <h2>Pavita, kita baikan, yuk?</h2>
+        <p class="sub">Nggak harus sekarang kalau kamu belum siap. Pilih yang paling nyaman buat kamu, ya.</p>
+        <div class="choice">
+          <button class="btn primary" data-answer="yes">Yaudah, sini baikan 💗</button>
+          <button class="btn secondary" data-answer="time">Aku butuh waktu dulu 🕊️</button>
+          <button class="btn ghost" data-answer="mad">Aku masih kesel 😤</button>
+        </div>
+        <p class="smallnote">Apa pun jawabanmu, aku akan menghargainya.</p>
+      </div>
+    </section>
+    <!-- 10 -->
+    <section class="screen" data-screen="9">
+      <div class="panel">
+        <div class="ending-icon" id="endingIcon">💗🐻</div>
+        <span class="kicker">pesan terakhir</span>
+        <h2 id="endingTitle">Makasih udah baca sampai sini!</h2>
+        <p class="sub" id="endingText">Aku minta maaf, ya. Kalau boleh, aku pengin kita baikan—pelan-pelan juga nggak apa-apa.</p>
+        <div class="letter"><p id="endingLetter" style="text-align:center;margin:0">Dari Shaffan, manusia yang sedang belajar jadi lebih baik, bukan cuma jago bikin website. 😭💗</p></div>
+        <div class="btnrow">
+          <button class="btn primary" id="finalHugBtn">Kirim peluk virtual 🫂</button>
+          <button class="btn secondary" id="againBtn">Baca dari awal ↻</button>
+        </div>
+        <p class="smallnote" id="hugFeedback" aria-live="polite"></p>
+      </div>
+    </section>
+  </main>
+  <footer class="footer">dibuat oleh Shaffan untuk Pavita · kecil-kecil tapi tulus 💗</footer>
+</div>
+<div id="toast" role="status" aria-live="polite"></div>
+<script>
+(() => {
+  const screens = [...document.querySelectorAll('.screen')];
+  const progress = document.getElementById('progressFill');
+  const toast = document.getElementById('toast');
+  let current = 0, musicOn = false, audioCtx = null, melodyTimer = null, noteIndex = 0;
+
+  function showToast(message) {
+    toast.textContent = message; toast.style.display = 'block';
+    clearTimeout(showToast.timer); showToast.timer = setTimeout(() => toast.style.display='none', 2500);
+  }
+  function typeText(el) {
+    if (!el || el.dataset.typed === 'yes') return;
+    const full = el.dataset.typing || '';
+    el.dataset.typed = 'yes'; el.textContent = '';
+    let i = 0;
+    const step = () => {
+      if (!el.isConnected) return;
+      el.textContent = full.slice(0, i++);
+      if (i <= full.length) setTimeout(step, 24);
+    };
+    step();
+  }
+  function goTo(index) {
+    current = Math.max(0, Math.min(screens.length - 1, index));
+    screens.forEach((s, i) => { s.classList.toggle('active', i === current); });
+    progress.style.width = ((current + 1) / screens.length * 100) + '%';
+    const typing = screens[current].querySelector('[data-typing]');
+    if (typing) { typing.dataset.typed = 'no'; typeText(typing); }
+    window.scrollTo({top:0, behavior:'smooth'});
+    if (current === 9) confetti(24);
+  }
+  document.querySelectorAll('[data-next]').forEach(btn => btn.addEventListener('click', () => goTo(current + 1)));
+  document.getElementById('restartBtn').addEventListener('click', () => {
+    document.getElementById('letterBox').hidden = true;
+    document.getElementById('passwordFeedback').textContent = '';
+    document.getElementById('quizFeedback').textContent = '';
+    document.getElementById('hugFeedback').textContent = '';
+    goTo(0); showToast('Mulai lagi dari awal 💌');
+  });
+  document.getElementById('againBtn').addEventListener('click', () => {
+    document.getElementById('letterBox').hidden = true; goTo(0);
+  });
+
+  // Password is a playful gate, not real access control.
+  const acceptedPasswords = ['pavita', 'pavita123', 'ziadatu', 'sayang'];
+  function unlock() {
+    const val = document.getElementById('passwordInput').value.trim().toLowerCase();
+    const feedback = document.getElementById('passwordFeedback');
+    if (acceptedPasswords.includes(val)) {
+      feedback.textContent = 'Yay! Rahasianya kebuka 🔓💗';
+      showToast('Berhasil dibuka!');
+      setTimeout(() => goTo(2), 450);
+    } else {
+      feedback.textContent = 'Hmm belum cocok 😭 Coba “pavita” yaa.';
+    }
+  }
+  document.getElementById('unlockBtn').addEventListener('click', unlock);
+  document.getElementById('passwordInput').addEventListener('keydown', e => { if(e.key === 'Enter') unlock(); });
+  document.getElementById('envelopeBtn').addEventListener('click', () => {
+    const box = document.getElementById('letterBox');
+    box.hidden = !box.hidden;
+    document.getElementById('envelopeBtn').textContent = box.hidden ? '💌' : '💖';
+    if (!box.hidden) box.scrollIntoView({behavior:'smooth',block:'nearest'});
+  });
+
+  document.querySelectorAll('[data-quiz]').forEach(btn => btn.addEventListener('click', () => {
+    const fb = document.getElementById('quizFeedback');
+    if (btn.dataset.quiz === 'benar') {
+      fb.textContent = 'BETUL! Hadiahnya satu hati virtual 💗'; confetti(12);
+    } else {
+      fb.textContent = 'WKWK bisa aja 😭 Tapi jawaban sebenarnya: karena mau minta maaf.';
+    }
+  }));
+
+  // Local-only photo previews.
+  document.getElementById('photoInput').addEventListener('change', e => {
+    const files = [...(e.target.files || [])].slice(0,2);
+    files.forEach((file, i) => {
+      if (!file.type.startsWith('image/')) return;
+      const reader = new FileReader();
+      reader.onload = ev => {
+        const slot = document.getElementById(i === 0 ? 'slot1' : 'slot2');
+        slot.replaceChildren();
+        const img = document.createElement('img'); img.src = ev.target.result; img.alt = 'Foto kenangan ' + (i+1);
+        slot.appendChild(img);
+      };
+      reader.readAsDataURL(file);
+    });
+    if (files.length) showToast('Foto tampil di browser ini 📸');
+  });
+
+  document.querySelectorAll('[data-answer]').forEach(btn => btn.addEventListener('click', () => {
+    const answer = btn.dataset.answer;
+    const title = document.getElementById('endingTitle');
+    const text = document.getElementById('endingText');
+    const letter = document.getElementById('endingLetter');
+    const icon = document.getElementById('endingIcon');
+    if (answer === 'yes') {
+      icon.textContent = '🥹💗'; title.textContent = 'YAY, BAikan! (virtual dulu)'; 
+      text.textContent = 'Makasih sudah kasih aku kesempatan. Sekarang aku harus membuktikan lewat sikap, bukan cuma bikin kamu senyum lewat website.';
+      letter.textContent = 'Deal yaa? Aku traktir kamu satu (1) peluk virtual dan seribu usaha buat lebih baik. 😭🫂';
+      confetti(38);
+    } else if (answer === 'time') {
+      icon.textContent = '🕊️🌷'; title.textContent = 'Nggak apa-apa, take your time.';
+      text.textContent = 'Aku menghargai kamu butuh waktu. Aku nggak akan memaksa kamu untuk langsung baik-baik saja. Kalau kamu sudah siap, aku ada.';
+      letter.textContent = 'Pelan-pelan aja, Pavita. Semoga hatimu terasa lebih ringan. 💗';
+    } else {
+      icon.textContent = '🥺🌧️'; title.textContent = 'Aku ngerti kamu masih kesel.';
+      text.textContent = 'Kamu berhak merasakan itu. Aku nggak akan menuntut kamu langsung memaafkan. Aku akan coba memperbaiki hal yang memang perlu aku perbaiki.';
+      letter.textContent = 'Aku tetap minta maaf, ya. Kalau nanti kamu siap bicara, aku akan berusaha mendengarkan dengan baik. 🤍';
+    }
+    goTo(9);
+  }));
+  document.getElementById('finalHugBtn').addEventListener('click', () => {
+    document.getElementById('hugFeedback').textContent = 'PLOP! Satu peluk virtual mendarat buat Pavita 🫂💗';
+    confetti(20); hearts(8);
+  });
+
+  function hearts(count=1) {
+    const symbols = ['💗','💕','💛','♡','✨','🌷'];
+    for (let i=0; i<count; i++) {
+      const el = document.createElement('span'); el.className = 'heart';
+      el.textContent = symbols[Math.floor(Math.random()*symbols.length)];
+      el.style.left = (Math.random()*94+2)+'vw';
+      el.style.fontSize = (16+Math.random()*22)+'px';
+      el.style.animationDuration = (5+Math.random()*5)+'s';
+      document.body.appendChild(el); setTimeout(()=>el.remove(), 10500);
+    }
+  }
+  function confetti(count=20) {
+    const symbols = ['💗','💛','✨','🌸','💕'];
+    for (let i=0;i<count;i++) {
+      const el = document.createElement('span'); el.className='confetti';
+      el.textContent=symbols[Math.floor(Math.random()*symbols.length)];
+      el.style.left=Math.random()*100+'vw';
+      el.style.fontSize=(12+Math.random()*18)+'px';
+      el.style.animationDelay=(Math.random()*.8)+'s';
+      document.body.appendChild(el); setTimeout(()=>el.remove(),4200);
+    }
+  }
+  setInterval(() => { if (Math.random() > .45) hearts(1); }, 1700);
+
+  // Original gentle two-note ambient melody via Web Audio; starts only after user taps.
+  const musicBtn = document.getElementById('musicBtn');
+  function playNote(freq, duration=.42) {
+    if (!audioCtx || audioCtx.state !== 'running') return;
+    const osc = audioCtx.createOscillator(), gain = audioCtx.createGain();
+    osc.type = 'sine'; osc.frequency.value = freq;
+    gain.gain.setValueAtTime(.0001, audioCtx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(.045, audioCtx.currentTime + .04);
+    gain.gain.exponentialRampToValueAtTime(.0001, audioCtx.currentTime + duration);
+    osc.connect(gain); gain.connect(audioCtx.destination);
+    osc.start(); osc.stop(audioCtx.currentTime + duration + .03);
+  }
+  function melodyStep() {
+    const notes = [523.25,659.25,783.99,659.25,587.33,698.46,659.25,523.25];
+    playNote(notes[noteIndex % notes.length], .48); noteIndex++;
+  }
+  async function toggleMusic() {
+    try {
+      if (!musicOn) {
+        const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+        if (!AudioContextClass) { showToast('Browser ini belum mendukung musik otomatis.'); return; }
+        audioCtx = audioCtx || new AudioContextClass();
+        await audioCtx.resume(); musicOn = true; melodyStep();
+        melodyTimer = setInterval(melodyStep, 560);
+        musicBtn.textContent = '♫ Musik: nyala'; musicBtn.setAttribute('aria-pressed','true');
+      } else {
+        musicOn = false; clearInterval(melodyTimer);
+        if (audioCtx) await audioCtx.suspend();
+        musicBtn.textContent = '♫ Musik: mati'; musicBtn.setAttribute('aria-pressed','false');
+      }
+    } catch(e) { showToast('Musik tidak bisa diputar di browser ini.'); }
+  }
+  musicBtn.addEventListener('click', toggleMusic);
+  goTo(0);
+})();
+</script>
+</body>
+</html>
